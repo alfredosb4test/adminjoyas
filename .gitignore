@@ -5,6 +5,7 @@
 *.sw[mnpcod]
 *.log
 *.tmp
+*.rar
 *.tmp.*
 log.txt
 *.sublime-project
@@ -28,6 +29,7 @@ plugins/
 plugins/android.json
 plugins/ios.json
 www/
+backup/
 $RECYCLE.BIN/
 
 .DS_Store
