@@ -78,9 +78,6 @@ export class InicioPage {
 				                	fontColor: '#2e61b2'
 				                }
 				            },
-				            
-				            
-				       
 				    },  					
             data: {
                 labels: ["Pendientes", "Finalizadas"],
