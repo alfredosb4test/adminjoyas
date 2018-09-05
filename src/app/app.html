@@ -1,0 +1,25 @@
+<ion-menu [content]="content">
+  <ion-header>
+    <ion-toolbar color="naranja">
+      <ion-title>Paginas</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <button ion-item (click)="abrirPagina(inicio, 'rootPage')">
+        Inicio
+      </button>
+      <button ion-item (click)="abrirPagina(tabCatalogo, 'rootPage')">
+        Catalogo
+      </button>      
+      <button ion-item (click)="abrirPagina(clientes, 'rootPage')">
+        Clientes
+      </button>      
+      <button ion-item (click)="abrirPagina(tabVentas, 'rootPage')">
+        Ventas
+      </button>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-nav #content [root]="rootPage" (changePage)='abrirPaginaEmmit($event)' ></ion-nav>

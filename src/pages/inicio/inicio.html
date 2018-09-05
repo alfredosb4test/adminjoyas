@@ -1,0 +1,71 @@
+ 
+
+<ion-header>
+  <ion-navbar color="rojo_1">
+    <ion-title>
+      Control de Ventas
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+  
+
+<ion-content class="card-background-page">
+
+  <ion-segment [(ngModel)]="segment_ventas" (ionChange)="verGraficas($event)" color="primary">
+    <ion-segment-button value="ventas_pendientes">
+      <span class="txt_size_12">Pendientes</span> <ion-badge class="txt_size_12" color="azul_1">{{ventasPendientes}}</ion-badge>
+    </ion-segment-button>
+    <ion-segment-button value="ventas_finalizadas">
+      <span class="txt_size_12">Finalizadas</span> <ion-badge class="txt_size_12" color="azul_1">{{ventasFinalizadas}}</ion-badge> 
+    </ion-segment-button>    
+    <ion-segment-button value="segment_grap">
+      <span class="txt_size_12">Graficas </span>
+    </ion-segment-button>
+  </ion-segment>
+
+  <div [ngSwitch]="segment_ventas">
+
+
+
+    <ion-list *ngSwitchCase="'ventas_finalizadas'" >
+      <ion-item-sliding class="ion_items" id="ion_items" *ngFor=" let venta of ventasFinalizadasCarrousel" #itemsProd>
+        <ion-item id="cont-badge" tabBadge="14" tabBadgeStyle="danger" (click)="verVentasProd(venta.idProducto)">
+          <ion-avatar item-start>
+            <img src="assets/imgs/{{venta.foto}}">
+            
+          </ion-avatar>
+          <h2>{{venta.nombre}}</h2>
+          <p>Ventas Pendientes <ion-badge color="verde_1" item-end> {{venta.total}} </ion-badge></p>
+        </ion-item>
+      </ion-item-sliding>  
+    </ion-list>
+
+     
+    <ion-list *ngSwitchCase="'ventas_pendientes'" >
+      <ion-item-sliding class="ion_items" id="ion_items" *ngFor=" let venta of ventasPendientesCarrousel" #itemsProd>
+        <ion-item id="cont-badge" tabBadge="14" tabBadgeStyle="danger" (click)="verVentasProd(venta.idProducto)">
+          <ion-avatar item-start>
+            <img src="assets/imgs/{{venta.foto}}">
+            
+          </ion-avatar>
+          <h2>{{venta.nombre}}</h2>
+          <p>Ventas Pendientes <ion-badge color="naranja" item-end> {{venta.total}} </ion-badge></p>
+        </ion-item>
+      </ion-item-sliding>  
+    </ion-list>
+
+
+    <ion-list *ngSwitchCase="'segment_grap'">
+
+    </ion-list>
+    
+  </div>    
+
+<canvas #graficasCanvas id="graficas_canvas" *ngIf="showGraficas"></canvas>
+
+ 
+
+
+
+
+</ion-content>

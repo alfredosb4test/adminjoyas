@@ -1,0 +1,27 @@
+<!-- Generated template for the FrmProductoComponent component -->
+<div *ngIf="form">
+	<form [formGroup]="form"> 
+	  <ion-item>
+		<ion-label *ngIf="!form.controls.nombre.valid &&
+		    form.controls.nombre.dirty && form.controls.nombre.touched"
+		    class="" color="danger">
+		  El nombre es requerido. 
+		</ion-label>	  	
+	    <ion-label color="primary" floating>Nombre </ion-label>
+	    <ion-input name="nombre" type="text" formControlName="nombre"  maxlength="35"></ion-input>
+
+	  </ion-item>
+
+	  <ion-item>
+	    <ion-label color="primary" floating>Direccion</ion-label>
+	    <ion-input name="direccion" formControlName="direccion" maxlength="200"></ion-input>
+	  </ion-item>
+
+	  <ion-item>
+	    <ion-label color="primary" floating>Telefono</ion-label>
+	    <ion-input name="telefono" formControlName="telefono" maxlength="20"></ion-input>
+	  </ion-item>
+
+	  <button ion-button block [disabled]="!form.valid" (click)="guardar_cliente(btn_titulo)">{{btn_titulo}}</button>
+ 	</form>
+</div>

@@ -1,0 +1,68 @@
+<!-- Generated template for the FrmProductoComponent component -->
+<div *ngIf="form">
+	<form [formGroup]="form"> 
+	  <ion-item>
+		<ion-label *ngIf="!form.controls.nombre.valid &&
+		    form.controls.nombre.dirty && form.controls.nombre.touched"
+		    class="" color="danger">
+		  El nombre es requerido. 
+		</ion-label>	  	
+	    <ion-label color="primary" floating>Nombre </ion-label>
+	    <ion-input name="nombre" type="text" formControlName="nombre"  maxlength="35"></ion-input>
+
+	  </ion-item>
+
+	  <ion-item>
+	    <ion-label color="primary" floating>Descripcion</ion-label>
+	    <ion-input name="descripcion" formControlName="descripcion" maxlength="200"></ion-input>
+	  </ion-item>
+
+	  <ion-item>
+	    <ion-label color="primary" floating>Nota</ion-label>
+	    <ion-input name="nota" formControlName="nota" maxlength="200"></ion-input>
+	  </ion-item>
+
+	  <ion-item>
+	    <ion-label color="primary" floating>Precio</ion-label>
+	    <ion-input type="number" name="precio" formControlName="precio" maxlength="8"></ion-input>
+	  </ion-item>
+
+	  <ion-item>
+	    <ion-label color="primary" floating>Precio venta</ion-label>
+	    <ion-input  type="number" name="precio_venta" formControlName="precio_venta" maxlength="8"></ion-input>
+	  </ion-item>
+ 
+			<ion-grid>
+				<ion-row>
+
+					<ion-col col-10 col-sm> 
+						
+						<ion-item *ngIf="categorias.length">
+						    <ion-label>Categoria</ion-label>
+						    <ion-select okText="Aceptar" cancelText="Cancelar" formControlName="categoria" 
+						                interface="alert" [(ngModel)]="categoria_select">
+						      <ion-option *ngFor="let categoria of categorias" [value]="categoria.idCategoria"> {{categoria.nombre}} </ion-option>
+						    </ion-select>
+						</ion-item>
+			  	</ion-col>
+
+				  <ion-col col-2 >
+				    <button ion-button color="secondary" clear icon-only icon-start (click)="addCategoria()">
+				      <ion-icon name='add-circle' is-active="false"></ion-icon>
+				    </button>
+				  </ion-col>
+
+				</ion-row>
+			</ion-grid>
+
+	  <ion-item>
+	  	<ion-label color="primary">Cantidad <ion-badge>{{cantidad}}</ion-badge></ion-label>
+	    <ion-range min="0" max="10" [(ngModel)]="cantidad" formControlName="cantidad" snaps="true" color="secondary">
+	      <ion-label range-left>0</ion-label>
+	      <ion-label range-right>10</ion-label>
+	    </ion-range>
+	  </ion-item>
+
+	  <button ion-button block [disabled]="!form.valid" (click)="guardar_prod(btn_titulo)">{{btn_titulo}}</button>
+ 	</form>
+</div>

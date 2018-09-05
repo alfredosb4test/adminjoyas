@@ -1,0 +1,49 @@
+page-inicio {
+
+}
+
+.card-background-page {
+
+  ion-card {
+    position: relative;
+    text-align: center;
+    height: 140px;
+  }
+
+  .card-title {
+    position: absolute;
+    top: 6%;
+    font-size: 2.0em;
+    width: 100%;
+    font-weight: bold;
+    color: #f19c1d;
+  	-webkit-text-stroke-color: #f2e71d;
+  	-webkit-text-stroke-width: 0.45px;  
+  	background: #dce6f7; 
+  }
+
+  .card-subtitle {
+    font-size: 1.0em;
+    position: absolute;
+    top: 52%;
+    width: 100%;
+    color: #fff;
+  }
+
+}
+
+.ios, .md {
+
+    page-home {
+
+        .scroll-content {
+            background-color: map-get($colors, light);
+        }
+
+        ion-card-header {
+            font-weight: bold;
+        }
+
+    }
+
+}

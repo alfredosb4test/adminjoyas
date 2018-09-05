@@ -1,0 +1,78 @@
+<!--
+  Generated template for the VenderProductoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="rojo_1">
+    <ion-title>Vender - {{producto.nombre}}</ion-title>
+    <ion-buttons end>
+        <button ion-button icon-only (click)="closeModal()">
+            <ion-icon item-right name="ios-close-outline"></ion-icon>
+        </button>
+    </ion-buttons>      
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-card>
+ 
+ 
+        <img src="assets/imgs/{{img}}" style="max-height:400px" />
+ 
+
+    <ion-card-content>
+      <ion-card-title>
+        {{producto.nombre}}
+        </ion-card-title>
+
+      <ion-row>  
+        <ion-col col-8>
+          <p>
+            {{producto.precio_venta | currency:'MXN'}}
+          </p>
+        </ion-col>  
+        <ion-col col-4>
+          
+          
+    <button ion-button item-end icon-start clear (click)="verVentasProd(producto)">
+      <span item-start>Ventas : </span>
+      <span item-start><ion-badge [color]="colorVentas"> {{totalVentasProd}} </ion-badge></span>
+    </button>
+
+        </ion-col>  
+      </ion-row>
+
+    </ion-card-content>
+  </ion-card>
+  <form [formGroup]="form"> 
+    <ion-item *ngIf="clientes.length">
+        <ion-label>Clientes</ion-label>
+        <ion-select okText="Aceptar" cancelText="Cancelar" formControlName="frm_cliente_select" 
+                    interface="alert" [(ngModel)]="cliente_select">
+          <ion-option *ngFor="let cliente of clientes" [value]="cliente.idCliente"> {{cliente.nombre}} </ion-option>
+
+        </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="primary" floating>Cantidad Recibida</ion-label>
+      <ion-input  type="number" name="pagoInicial" formControlName="pagoInicial" maxlength="8"></ion-input>
+      <ion-label color="naranja" >{{errPago}}</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Producto Pagado</ion-label>
+      <ion-checkbox color="verde_1" checked="false" [(ngModel)]="chkPago" name="pagado" formControlName="pagado"></ion-checkbox>
+    </ion-item>
+
+    <button ion-button  block [disabled]="!form.valid" (click)="vender_prod(cliente_select)">Vender</button>
+
+  </form>  
+
+</ion-content>

@@ -1,0 +1,59 @@
+
+<ion-header>
+
+  <ion-navbar  color="rojo_1">
+    <ion-title>Productos</ion-title>
+    <ion-buttons end>
+    </ion-buttons>
+
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+	<ion-searchbar
+		[showCancelButton]="true" 
+		(ionCancel)="onCancel($event)"
+	  	(ionInput)="getItems($event)" >
+	</ion-searchbar>
+
+	<ion-fab right bottom (click)="push_pageNuevoProd()">
+		<button ion-fab mini color="secondary"><ion-icon name="add"></ion-icon></button>
+	</ion-fab>
+	<h2 class="txt_gris" *ngIf="!hayProductos">
+		Sin registros
+	</h2>	
+	<ion-list *ngIf="test_productos.length">
+		<ion-item-sliding class="ion_items" id="ion_items" *ngFor=" let producto of test_productos" #itemsProd>
+			<ion-item id="cont-badge" tabBadge="14" tabBadgeStyle="danger">
+				<ion-avatar item-start>
+				  <img src="assets/imgs/{{producto.foto}}">
+				  <div id="notifications-badge"><ion-badge  color="azul_1"> {{producto.cantidad}} </ion-badge></div>
+				</ion-avatar>
+				<h2>{{producto.nombre}}</h2>
+				<p> {{producto.precio_venta | currency:'MXN'}} </p>
+			</ion-item>
+		    <ion-item-options side="right">
+		      <button ion-button color="primary" (click)="editarProducto(producto)">
+		        <ion-icon name="create"></ion-icon>
+		        Editar
+		      </button>
+		      <button ion-button color="btn_vender" (click)="venderProducto(producto)">
+		        <ion-icon name="logo-usd"></ion-icon>
+		        Vender
+		      </button>	
+		      <button ion-button color="danger" (click)="eliminar_prod(producto.idProducto, producto.nombre)">
+		        <ion-icon name="trash"></ion-icon>
+		        Eliminar
+		      </button>			      	      
+		    </ion-item-options>
+
+		</ion-item-sliding>  
+	</ion-list>
+
+	<ion-infinite-scroll (ionInfinite)="doInfinite($event)" [enabled]="hayProductos_scroll">
+	<ion-infinite-scroll-content></ion-infinite-scroll-content>
+	</ion-infinite-scroll>
+
+</ion-content>

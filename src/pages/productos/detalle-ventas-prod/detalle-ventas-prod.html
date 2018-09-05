@@ -1,0 +1,49 @@
+<!--
+  Generated template for the DetalleVentasProdPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="rojo_1">
+    <ion-title>Ventas - {{producto.nombre}}</ion-title>
+    <ion-buttons end>
+        <button ion-button icon-only (click)="closeModal()">
+            <ion-icon item-right name="ios-close-outline"></ion-icon>
+        </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+	
+
+
+	<ion-card  *ngFor=" let cliente of clientes">  
+		<ion-card-content>
+			<ion-row>
+				<ion-col>
+					<h2><ion-icon ios="ios-person" md="md-person"></ion-icon> {{cliente.nombre}}</h2>
+				</ion-col>	
+				<ion-col offset-3 align-self-start>
+					<ion-badge 
+						(click)="verAbonos(cliente.idVenta, producto, cliente.precio)"
+						[color]="cliente.status == 'pagado' ? 'secondary' : 'naranja' " clear  item-end>
+						{{cliente.status}}
+					</ion-badge>
+				</ion-col>
+			</ion-row>
+  <ion-grid>
+    <ion-row>			
+			<ion-col class="txt_azu_1"><ion-icon ios="ios-pricetag" md="md-pricetag"></ion-icon> {{ cliente.precio | currency:'MXN':"symbol-narrow"}}</ion-col>
+			<ion-col offset-3 align-self-start><ion-icon ios="ios-calendar" md="md-calendar"></ion-icon> {{ cliente.fecha | date:"dd/MM/yyyy"}}</ion-col>
+
+    </ion-row>
+  </ion-grid>			
+		</ion-card-content>
+	</ion-card>
+
+</ion-content>
