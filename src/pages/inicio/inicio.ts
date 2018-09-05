@@ -97,7 +97,7 @@ export class InicioPage {
   		});
   	}, 100);
   }
-//test
+//test 2
   verVentasProd(idProducto){
     
     this.db.test_getProdOne(idProducto).then( (resp)=>{ 
