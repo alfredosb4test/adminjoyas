@@ -1,7 +1,7 @@
 import { Component, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
  
-import { TabHomePage, TabVentasPage, ClientesPage, DetalleVentasProdPage } from '../index.pages';
+import { TabHomePage, TabVentasPage, ClientesPage, DetalleVentasProdPage, DbBackupPage } from '../index.pages';
 import { ModalController  } from 'ionic-angular';
  
 import { DatabaseProvider } from '../../providers/database/database';
@@ -125,6 +125,12 @@ export class InicioPage {
 		this.navCtrl.push(pagina)
 		//this.changePage.emit(pagina)
 
+	}
+
+
+	DB_bk(){
+		let modal = this.modalCtrl.create(DbBackupPage, { });
+		modal.present();    
 	}
 
  

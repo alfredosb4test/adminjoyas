@@ -85,7 +85,7 @@ CREATE TABLE IF NOT EXISTS productos (
         DROP TABLE IF EXISTS ventas;
         DROP TABLE IF EXISTS abonos; 
         DROP TABLE IF EXISTS categorias;`
-      ,{})
+      )
       .then(()=>{
         return this.database.executeSql(
           `
@@ -132,8 +132,7 @@ CREATE TABLE IF NOT EXISTS productos (
                     activo INTEGER,
                     fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP
                     );
-          `
-          ,{} )
+          ` )
 
 
       }).catch((err)=>console.log("error detected creating tables", JSON.stringify( err ) ));

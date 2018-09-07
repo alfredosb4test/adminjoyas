@@ -4,6 +4,8 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 import { MyApp } from './app.component';
@@ -20,7 +22,8 @@ import { HomePage,
          EditarProductoPage, VenderProductoPage,
          DetalleVentasProdPage,
          DetalleAbonosProdPage,
-         AddCategoriaPage } from '../pages/index.pages';
+         AddCategoriaPage,
+         DbBackupPage } from '../pages/index.pages';
 
 import { FrmProductoComponent } from '../components/frm-producto/frm-producto';
 import { FrmUsuarioComponent } from '../components/frm-usuario/frm-usuario';
@@ -55,12 +58,14 @@ import { Camera } from '@ionic-native/camera';
     FrmAddAbonoComponent,
     DetalleVentasProdComponent,
     DetalleAbonosProdPage,
-    AddCategoriaPage
+    AddCategoriaPage,
+    DbBackupPage
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -84,7 +89,8 @@ import { Camera } from '@ionic-native/camera';
     FrmAddAbonoComponent,
     DetalleVentasProdComponent,
     DetalleAbonosProdPage,
-    AddCategoriaPage
+    AddCategoriaPage,
+    DbBackupPage
   ],
   providers: [
     StatusBar,

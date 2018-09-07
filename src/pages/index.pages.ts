@@ -12,5 +12,6 @@ export { VenderProductoPage } from './productos/vender-producto/vender-producto'
 export { DetalleVentasProdPage } from './productos/detalle-ventas-prod/detalle-ventas-prod';
 export { DetalleAbonosProdPage } from './productos/detalle-abonos-prod/detalle-abonos-prod';
 export { AddCategoriaPage } from './add-categoria/add-categoria';
+export { DbBackupPage } from './db-backup/db-backup';
 
 export { HomePage } from './home/home';
